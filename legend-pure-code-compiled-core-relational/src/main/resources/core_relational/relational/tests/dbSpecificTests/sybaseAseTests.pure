@@ -1,0 +1,12 @@
+// import meta::relational::runtime::*;
+// import meta::relational::dbTestRunner::*;
+
+// function <<test.Test>> meta::relational::tests::dbSpecificTests::SybaseASE::runSQLQueryTests():Boolean[1]
+// {
+//   let expectedSqls = [
+//     pair(meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::trim::testSpace_DbTestConfig_1__String_$0_1$_,'select rtrim(ltrim(\' Bloggs \'))')
+//   ]->newMap();
+        
+//   collectTests(meta::relational::tests::dbSpecificTests::sqlQueryTests)
+//       ->runTestsWith(DatabaseType.Sybase, $expectedSqls);
+// }

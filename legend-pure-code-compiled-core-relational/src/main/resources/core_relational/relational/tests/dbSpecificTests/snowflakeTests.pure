@@ -1,0 +1,13 @@
+// import meta::relational::runtime::*;
+// import meta::relational::dbTestRunner::*;
+// import meta::relational::tests::dbSpecificTests::Snowflake::*;
+
+// function <<test.Test>> meta::relational::tests::dbSpecificTests::Snowflake::runSQLQueryTests():Boolean[1]
+// {
+//   let expectedSqls = [
+//     pair(meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::atan2::testDecimal_DbTestConfig_1__String_$0_1$_,'select atan2(1.1,1)')
+//   ]->newMap();
+        
+//   collectTests(meta::relational::tests::dbSpecificTests::sqlQueryTests)
+//       ->runTestsWith(DatabaseType.Snowflake, $expectedSqls);
+// }

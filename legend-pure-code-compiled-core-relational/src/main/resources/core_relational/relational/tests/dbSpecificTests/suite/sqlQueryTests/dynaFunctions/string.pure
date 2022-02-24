@@ -1,0 +1,151 @@
+// import meta::relational::metamodel::*;
+// import meta::relational::dbTestRunner::*;
+
+
+// //           concatResult : concat(string1, string2),
+// //           joinStringsResult : joinStrings(string1,':'),
+// //           replaceResult: replace(string1, 'J', 'P'),
+// //           indexOfResult: indexOf('String Random','o'),
+
+// //           rtrimResult  :rtrim(string2),
+// //           ltrimResult  :ltrim(string2),
+// //           trimResult   :trim(string2),
+
+// //           string1Left : left(string1,2),
+// //           string1Right: right(string1,2),
+// //           string1Upper: toUpper(string1),
+// //           string1Lower: toLower(string1),
+
+
+// function <<dbTest.Test>> meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::concat::testSpaceBeforeSecondString(config:DbTestConfig[1]):String[0..1]
+// {
+//   let dynaFunc = ^DynaFunction(name='concat', parameters=[^Literal(value='Joe'),^Literal(value=' Bloggs')]);
+//   let expected = ^Literal(value='Joe Bloggs');
+//   runDynaFunctionDatabaseTest($dynaFunc, $expected, $config);
+// }
+
+// function <<dbTest.Test>> meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::concat::testNoSpace(config:DbTestConfig[1]):String[0..1]
+// {
+//   let dynaFunc = ^DynaFunction(name='concat', parameters=[^Literal(value='Mrs'), ^Literal(value='Smith') ]);
+//   let expected = ^Literal(value='MrsSmith');
+//   runDynaFunctionDatabaseTest($dynaFunc, $expected, $config);
+// }
+
+// function <<dbTest.Test>> meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::replace::testCharReplace(config:DbTestConfig[1]):String[0..1]
+// {
+//   let dynaFunc = ^DynaFunction(name='replace', parameters=[^Literal(value='Joe'), ^Literal(value='J'), ^Literal(value='P') ]);
+//   let expected = ^Literal(value='Poe');
+//   runDynaFunctionDatabaseTest($dynaFunc, $expected, $config);
+// }
+
+// function <<dbTest.Test>> meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::replace::testCharReplaceOppositeCase(config:DbTestConfig[1]):String[0..1]
+// {
+//   let dynaFunc = ^DynaFunction(name='replace', parameters=[^Literal(value='Joe'), ^Literal(value='j'), ^Literal(value='p') ]);
+//   let expected = ^Literal(value='Joe');
+//   runDynaFunctionDatabaseTest($dynaFunc, $expected, $config);
+// }
+
+// function <<dbTest.Test>> meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::replace::testStringReplace(config:DbTestConfig[1]):String[0..1]
+// {
+//   let dynaFunc = ^DynaFunction(name='replace', parameters=[^Literal(value='Joe Bloggs'), ^Literal(value=' Bl'), ^Literal(value='_Bl') ]);
+//   let expected = ^Literal(value='Joe_Bloggs');
+//   runDynaFunctionDatabaseTest($dynaFunc, $expected, $config);
+// }
+
+// function <<dbTest.Test>> meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::indexOf::testChar(config:DbTestConfig[1]):String[0..1]
+// {
+//   let dynaFunc = ^DynaFunction(name='indexOf', parameters=[^Literal(value='String Random'),^Literal(value='o')]);
+//   let expected = ^Literal(value=12);
+//   runDynaFunctionDatabaseTest($dynaFunc, $expected, $config);
+// }
+
+// function <<dbTest.Test>> meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::indexOf::testString(config:DbTestConfig[1]):String[0..1]
+// {
+//   let dynaFunc = ^DynaFunction(name='indexOf', parameters=[^Literal(value='String Random'),^Literal(value='and')]);
+//   let expected = ^Literal(value=9);
+//   runDynaFunctionDatabaseTest($dynaFunc, $expected, $config);
+// }
+
+// function <<dbTest.Test>> meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::rtrim::testNoSpace(config:DbTestConfig[1]):String[0..1]
+// {
+//   let dynaFunc = ^DynaFunction(name='rtrim', parameters=[^Literal(value='Smith')]);
+//   let expected = ^Literal(value='Smith');
+//   runDynaFunctionDatabaseTest($dynaFunc, $expected, $config);
+// }
+
+// function <<dbTest.Test>> meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::rtrim::testTrailingSpace(config:DbTestConfig[1]):String[0..1]
+// {
+//   let dynaFunc = ^DynaFunction(name='rtrim', parameters=[^Literal(value=' Bloggs ')]);
+//   let expected = ^Literal(value=' Bloggs');
+//   runDynaFunctionDatabaseTest($dynaFunc, $expected, $config);
+// }
+
+// function <<dbTest.Test>> meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::ltrim::testNoSpace(config:DbTestConfig[1]):String[0..1]
+// {
+//   let dynaFunc = ^DynaFunction(name='ltrim', parameters=[^Literal(value='Smith')]);
+//   let expected = ^Literal(value='Smith');
+//   runDynaFunctionDatabaseTest($dynaFunc, $expected, $config);
+// }
+
+// function <<dbTest.Test>> meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::ltrim::testStartingSpace(config:DbTestConfig[1]):String[0..1]
+// {
+//   let dynaFunc = ^DynaFunction(name='ltrim', parameters=[^Literal(value=' Bloggs ')]);
+//   let expected = ^Literal(value='Bloggs ');
+//   runDynaFunctionDatabaseTest($dynaFunc, $expected, $config);
+// }
+
+// function <<dbTest.Test>> meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::trim::testNoSpace(config:DbTestConfig[1]):String[0..1]
+// {
+//   let dynaFunc = ^DynaFunction(name='trim', parameters=[^Literal(value='Smith')]);
+//   let expected = ^Literal(value='Smith');
+//   runDynaFunctionDatabaseTest($dynaFunc, $expected, $config);
+// }
+
+// function <<dbTest.Test>> meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::trim::testSpace(config:DbTestConfig[1]):String[0..1]
+// {
+//   let dynaFunc = ^DynaFunction(name='trim', parameters=[^Literal(value=' Bloggs ')]);
+//   let expected = ^Literal(value='Bloggs');
+//   runDynaFunctionDatabaseTest($dynaFunc, $expected, $config);
+// }
+
+// function <<dbTest.Test>> meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::left::testNoSpace(config:DbTestConfig[1]):String[0..1]
+// {
+//   let dynaFunc = ^DynaFunction(name='left', parameters=[^Literal(value='Smith'), ^Literal(value=3)]);
+//   let expected = ^Literal(value='Smi');
+//   runDynaFunctionDatabaseTest($dynaFunc, $expected, $config);
+// }
+
+// function <<dbTest.Test>> meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::left::testSpace(config:DbTestConfig[1]):String[0..1]
+// {
+//   let dynaFunc = ^DynaFunction(name='left', parameters=[^Literal(value=' Bloggs '), ^Literal(value=3)]);
+//   let expected = ^Literal(value=' Bl');
+//   runDynaFunctionDatabaseTest($dynaFunc, $expected, $config);
+// }
+
+// function <<dbTest.Test>> meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::right::testNoSpace(config:DbTestConfig[1]):String[0..1]
+// {
+//   let dynaFunc = ^DynaFunction(name='right', parameters=[^Literal(value='Smith'), ^Literal(value=3)]);
+//   let expected = ^Literal(value='ith');
+//   runDynaFunctionDatabaseTest($dynaFunc, $expected, $config);
+// }
+
+// function <<dbTest.Test>> meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::right::testSpace(config:DbTestConfig[1]):String[0..1]
+// {
+//   let dynaFunc = ^DynaFunction(name='right', parameters=[^Literal(value=' Bloggs '), ^Literal(value=3)]);
+//   let expected = ^Literal(value='gs ');
+//   runDynaFunctionDatabaseTest($dynaFunc, $expected, $config);
+// }
+
+// function <<dbTest.Test>> meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::toUpper::test1(config:DbTestConfig[1]):String[0..1]
+// {
+//   let dynaFunc = ^DynaFunction(name='toUpper', parameters=[^Literal(value='Smith')]);
+//   let expected = ^Literal(value='SMITH');
+//   runDynaFunctionDatabaseTest($dynaFunc, $expected, $config);
+// }
+
+// function <<dbTest.Test>> meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::toLower::test1(config:DbTestConfig[1]):String[0..1]
+// {
+//   let dynaFunc = ^DynaFunction(name='toLower', parameters=[^Literal(value='Smith')]);
+//   let expected = ^Literal(value='smith');
+//   runDynaFunctionDatabaseTest($dynaFunc, $expected, $config);
+// }

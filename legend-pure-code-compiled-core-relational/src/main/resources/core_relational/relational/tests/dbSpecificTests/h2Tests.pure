@@ -1,0 +1,44 @@
+// Copyright 2021 Goldman Sachs
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+import meta::relational::runtime::*;
+import meta::relational::dbTestRunner::*;
+import meta::relational::tests::dbSpecificTests::H2::*;
+import meta::pure::alloy::connections::*;
+
+function <<test.Test>> meta::relational::tests::dbSpecificTests::H2::runSQLQueryTests():Boolean[1]
+{
+  let conn= meta::relational::dbTestRunner::getTestConnection(DatabaseType.H2, meta::pure::router::extension::defaultRelationalExtensions());
+  $conn->meta::relational::tests::dbSpecificTests::H2::runSQLQueryTests();
+    //  let remoteH2Connection = ^RelationalDatabaseConnection(
+    //                 element=^meta::relational::metamodel::Database(name='dummyDB'),
+    //                 datasourceSpecification = ^meta::pure::alloy::connections::alloy::specification::StaticDatasourceSpecification(databaseName = 'temp', 
+    //                                                         host = '127.0.0.1',
+    //                                                         port = 1111),
+    //                 authenticationStrategy= ^ meta::pure::alloy::connections::alloy::authentication::DefaultH2AuthenticationStrategy(),
+    //                 type = DatabaseType.H2
+    //                 );
+    //                 println($remoteH2Connection);
+    //    $remoteH2Connection->meta::relational::tests::dbSpecificTests::H2::runSQLQueryTests();
+}
+
+function meta::relational::tests::dbSpecificTests::H2::runSQLQueryTests(connection:RelationalDatabaseConnection[0..1]):Boolean[1]
+{
+  let expectedSqls = [
+    pair(meta::relational::tests::dbSpecificTests::sqlQueryTests::dynaFunctions::abs::testNegative_DbTestConfig_1__String_$0_1$_, 'select abs(-1)' )
+  ]->newMap();
+      
+  collectTests(meta::relational::tests::dbSpecificTests::sqlQueryTests)
+      ->runTestsWith(DatabaseType.H2, $connection,  $expectedSqls);
+}
